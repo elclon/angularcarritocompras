@@ -6,7 +6,7 @@ import { UsuariosComponent } from '../app/usuarios/usuarios.component';
 import { PrincipalComponent } from '../app/principal/principal.component';
 
 const app_routes: Routes = [
-  { path: '**', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: UsuariosComponent},
   { path: 'principal', component: PrincipalComponent, children:[
     { 

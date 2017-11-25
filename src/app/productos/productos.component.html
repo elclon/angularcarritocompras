@@ -1,3 +1,63 @@
-<p>
-  productos works!
-</p>
+<div class="row justify-content-md-right">
+  <div class="col">
+     <form class="form-inline  waves-light" mdbRippleRadius>
+         <input #buscar (keyup) = "this._ProductosService.filtrarProductos(buscar.value)" class="form-control mr-sm-2" type="text" placeholder="Buscar Productos">
+     </form>
+  </div>
+</div>
+
+<div class="row">
+
+<!--First column-->
+<div class="col-lg-3 col-md-6 mb-r" *ngFor="let item of this._ProductosService.obtenerProductos()">
+ <!--Card-->
+ <div class="card card-cascade narrower">
+   <!--Card image-->
+   <div class="view overlay hm-white-slight">
+     <img src="{{item.ImagenUrl}}" class="img-fluid" alt="">
+     <a>
+       <div class="mask waves-effect waves-light" mdbRippleRadius></div>
+     </a>
+   </div>
+   <!--/.Card image-->
+
+   <!--Card content-->
+   <div class="card-body">
+     <!--Category & Title-->
+     <h4 class="card-title bodymiddle">
+       <strong>
+         <a href="">{{ item.NombreProducto }}</a>
+       </strong>
+     </h4>
+
+     <!--Description-->
+     <div class="bodymiddle">
+         <h5>Cantidad Disponible: <small>{{ item.Unidades }}</small></h5>
+         <span class="left">Precio: {{ item.Precio | currency:'USD':true:'1.0-0' }}</span>
+         <div class="col-md-12 middle">
+           <button type="button" (click) = "verDetalleProducto(item.id)" class="btn btn-success btn-rounded waves-light btn-sm" mdbRippleRadius>Ver Detalles</button>
+         </div>
+     </div>
+
+     <!--Card footer-->
+     <div class="card-footer">
+
+         <div class="row">
+             <div class="col-md-6">
+                 <button type="button" (click) = "agregarProductoAPedido(item.id, txtCantidad.value)" class="btn btn-primary waves-light btn-sm" mdbRippleRadius>Pedir</button>
+             </div>
+             <div class="col-md-6 right">
+                 <input id="txtCantidad" name="txtCantidad" value=1 type="number" id="form6" class="form-control textinputmiddle" mdbActive #txtCantidad>
+             </div>
+         </div>          
+     </div>
+
+   </div>
+   <!--/.Card content-->
+
+ </div>
+ <!--/.Card-->
+
+</div>
+<!--/First column-->
+</div>

@@ -15,6 +15,7 @@ import { UsuariosService } from '../app/Servicios/usuarios.service';
 
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ProductosService } from './Servicios/productos.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { HttpModule } from '@angular/http';
     HttpModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [UsuariosService],
+  providers: [UsuariosService, ProductosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

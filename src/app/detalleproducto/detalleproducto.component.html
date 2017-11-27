@@ -1,3 +1,17 @@
-<p>
-  detalleproducto works!
-</p>
+<div class="row" *ngIf="this.producto">
+  <div class="col-md-4">
+      <div class="col-lg-12">
+          <!--Featured image-->
+          <div class="view overlay hm-white-slight waves-light" mdbRippleRadius>
+              <img src="{{producto.ImagenUrl}}" alt="Sample image for first version of blog listing">
+
+          </div>
+      </div>
+  </div>
+  <div class="col-md-8 ">
+      <h4 class="mb-4"><strong>{{ producto.NombreProducto }}</strong></h4>
+      <p><strong>Precio Unitario:</strong>, {{ producto.Precio }}</p>
+      <p><strong>Cantidad:</strong>, {{ producto.Unidades }}</p>
+      <a [routerLink]="['/home']" class="btn btn-success mb-3 waves-light" mdbRippleRadius>Volver</a>
+  </div>
+</div>

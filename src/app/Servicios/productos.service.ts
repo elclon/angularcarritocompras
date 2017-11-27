@@ -18,21 +18,7 @@ export class ProductosService {
     .map((res: Response) => res.json());
   }
 
-  public filtrarProductos(_Valor:string) {
-    this.productosAux.filter((lProductos: Producto) => lProductos.NombreProducto === _Valor);
-    this.productos =this.productosAux;
-
-    _Valor = _Valor.toLowerCase();
-    
-    let coincidentes: Producto[] = [];
-
-    for(let p of this.productos) {
-      if(p.NombreProducto.toLowerCase().includes(_Valor)) {
-        coincidentes.push(p);
-      }
-    }
-    this.productos = coincidentes;
-  }
+  
 
   public getProductos(): Producto[] {
     return this.productos;

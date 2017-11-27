@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Producto } from '../Modelos/producto';
 import { Pedido } from '../Modelos/pedido';
 import { ProductosService } from '../../app/Servicios/productos.service';
+import { Pipe } from '@angular/core';
 
 
 @Component({
@@ -19,9 +20,10 @@ export class ProductosComponent implements OnInit {
   constructor(private _ProductosService: ProductosService, private router:Router) { }
 
   ngOnInit() {
+
     this._ProductosService.obtenerProductos().subscribe(
       (data: Response) => {
-        this.productos = JSON.parse(JSON.stringify(data));
+        this.productos = <Producto[]>JSON.parse(JSON.stringify(data));
         console.log(this.productos);
       }
     );
@@ -66,4 +68,6 @@ export class ProductosComponent implements OnInit {
       alert("No se cuenta con el stock suficiente.");
     }
   }
+
+
 }

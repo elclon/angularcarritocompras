@@ -11,11 +11,10 @@ export class ProductosService {
   private url:string
 
   constructor(private http: Http) {
-    this.url = "https://examenangularreact.firebaseio.com/.json";
    }
 
   public obtenerProductos() {
-    return this.http.get(this.url)
+    return this.http.get("https://examenangularreact.firebaseio.com/productos/.json")
     .map((res: Response) => res.json());
   }
 

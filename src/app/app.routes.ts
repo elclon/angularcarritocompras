@@ -8,24 +8,8 @@ import { PrincipalComponent } from '../app/principal/principal.component';
 const app_routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: UsuariosComponent},
-  { path: 'principal', component: PrincipalComponent, children:[
-    { 
-        path: '', 
-        component: PrincipalComponent 
-    },
-    { 
-        path: 'detalleproducto/:id', 
-        component: DetalleProductoComponent 
-    },
-    { 
-        path: 'pedidos', 
-        component: PedidosComponent 
-    },
-    { 
-        path: 'home', 
-        component: ProductosComponent 
-    },
-  ]}
+  { path: 'principal', component: PrincipalComponent },
+  { path: 'detalleproducto/:id', component: DetalleProductoComponent }
 ];
 
 export const app_routing = RouterModule.forRoot(app_routes);

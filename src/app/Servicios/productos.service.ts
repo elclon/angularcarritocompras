@@ -24,12 +24,5 @@ export class ProductosService {
     return this.productos;
   }
 
-  public mpObtenerDatosProducto(_id: number)
-  {
-    for(let p of this.productos) {
-      if(p.id == _id) {
-        return p;
-      }
-    }
-  }
+  
 }

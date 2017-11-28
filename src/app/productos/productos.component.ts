@@ -49,13 +49,12 @@ export class ProductosComponent implements OnInit {
 
 
   private verDetalleProducto( _idProducto:number ){
-    console.log(_idProducto);
-    this.router.navigate(['/principal/DetalleProducto', _idProducto] );
+    this.router.navigate(['./detalleproducto', _idProducto] );
   }
 
   public agregarProductoAPedido(_idProducto:number, _Cantidad: number){
     
-    let lProducto = this._ProductosService.mpObtenerDatosProducto(_idProducto);
+    let lProducto = this.mpObtenerDatosProducto(_idProducto);
 
     if(_Cantidad <= lProducto.Unidades){
       lProducto.Unidades = lProducto.Unidades - _Cantidad;
@@ -88,5 +87,13 @@ export class ProductosComponent implements OnInit {
     }
   }
 
+  public mpObtenerDatosProducto(_id: number)
+  {
+    for(let p of this.productos) {
+      if(p.id == _id) {
+        return p;
+      }
+    }
+  }
 
 }

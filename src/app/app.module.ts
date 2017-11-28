@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { app_routing } from './app.routes';
 
 import { ProductosComponent } from './productos/productos.component';
-import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
+import { DetalleProductoComponent } from './detalleproducto/detalleproducto.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { PrincipalComponent } from './principal/principal.component';
@@ -19,9 +19,9 @@ import { ProductosService } from './Servicios/productos.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
     ProductosComponent,
-    DetalleproductoComponent,
+    DetalleProductoComponent,
     NavbarComponent,
     PedidosComponent,
     PrincipalComponent,

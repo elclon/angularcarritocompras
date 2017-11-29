@@ -31,4 +31,14 @@ export class ProductosService {
     }
   }
   
+  public actualizarCantidadProducto(id: number, cantidad: number) {
+    let lCantidadProdBD:number;    
+    this.http.get(`https://examenangularreact.firebaseio.com/productos/${ id }/Unidades/.json`)
+    .map((res: Response) => lCantidadProdBD = res.json());
+
+    console.log(lCantidadProdBD);
+
+    //let url = 'examenangularreact.firebaseio.com/productos/${ id }/Unidades.json';
+    //return this.http.put( url, JSON.stringify((lCantidadProdBD - cantidad)));
+  }
 }

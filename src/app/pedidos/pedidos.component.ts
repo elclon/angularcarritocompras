@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Pedido } from '../Modelos/pedido';
+import { ProductosService } from '../Servicios/productos.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -12,7 +13,7 @@ export class PedidosComponent implements OnInit {
   pedido:Pedido[];
   @Output() lListaPedido:Pedido[] = [];
 
-  constructor() { }
+  constructor(private _ProductosService: ProductosService ) { }
 
   ngOnInit() {
   }
@@ -34,6 +35,8 @@ export class PedidosComponent implements OnInit {
   }
 
   private pagarPedido(){
-    console.log(this.pedido);
+    for( let i of this.pedido) {
+      this._ProductosService.actualizarCantidadProducto(i.id, 12)
+    }
   }
 }

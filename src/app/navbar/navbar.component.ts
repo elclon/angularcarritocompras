@@ -32,6 +32,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/pedidos'] );
   }
 
+  private verProductos(){
+    this.router.navigate(['/principal'] );
+  }
+
   private logOut() {
     sessionStorage.removeItem("stPedidos");
     this.router.navigate( ['/login'] );

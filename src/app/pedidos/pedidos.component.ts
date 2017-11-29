@@ -33,4 +33,7 @@ export class PedidosComponent implements OnInit {
     return lImporteTotal;
   }
 
+  private pagarPedido(){
+    console.log(this.pedido);
+  }
 }

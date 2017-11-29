@@ -22,10 +22,10 @@
             </p>
             <form class="form-inline pl-auto d-flex justify-content-center">
                 <div class="md-form form-group">
-                    <button class="btn btn-primary" id="docs-newsletter-approved" data-bf-newsletter="submit">Pagar
+                    <button (click) = "pagarPedido()" class="btn btn-primary" id="docs-newsletter-approved" data-bf-newsletter="submit">Pagar
                         <i class="fa fa-check" aria-hidden="true"></i>
                     </button>
-                    <a [routerLink]="['/home']"  class="btn btn-outline-primary" id="docs-newsletter-removed">Volver
+                    <a [routerLink]="['/principal']"  class="btn btn-outline-primary" id="docs-newsletter-removed">Volver
                         <i class="fa fa-mail-reply" aria-hidden="true"></i>
                     </a>
                 </div>

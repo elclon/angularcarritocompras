@@ -31,4 +31,9 @@ export class NavbarComponent implements OnInit {
   private verDetallePedidos(){
     this.router.navigate(['/pedidos'] );
   }
+
+  private logOut() {
+    sessionStorage.removeItem("stPedidos");
+    this.router.navigate( ['/login'] );
+  }
 }

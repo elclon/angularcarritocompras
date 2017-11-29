@@ -35,7 +35,11 @@ import { ProductosService } from './Servicios/productos.service';
     HttpModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [UsuariosService, ProductosService],
+  providers: [
+    UsuariosService, 
+    ProductosService,
+    ProductosComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

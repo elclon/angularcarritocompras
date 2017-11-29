@@ -52,37 +52,41 @@ export class ProductosComponent implements OnInit {
   }
 
   public agregarProductoAPedido(_idProducto:number, _Cantidad: number){
-    
-    let lProducto = this._ProductosService.mpObtenerDatosProducto(_idProducto);
+  
+    for (let p of this.productos) {
+      if (p.id == _idProducto) {
+        let lProducto = p;
+        if (_Cantidad <= lProducto.Unidades) {
+          lProducto.Unidades = lProducto.Unidades - _Cantidad;
 
-    if(_Cantidad <= lProducto.Unidades){
-      lProducto.Unidades = lProducto.Unidades - _Cantidad;
-      
-      let lPedidoAux =  {} as Pedido;
-      lPedidoAux.id = lProducto.id;
-      lPedidoAux.NombreProducto = lProducto.NombreProducto;
-      lPedidoAux.Precio = lProducto.Precio;
-      lPedidoAux.Unidades = Number(_Cantidad);
-      lPedidoAux.ImagenUrl = lProducto.ImagenUrl;
+          let lPedidoAux = {} as Pedido;
+          lPedidoAux.id = lProducto.id;
+          lPedidoAux.NombreProducto = lProducto.NombreProducto;
+          lPedidoAux.Precio = lProducto.Precio;
+          lPedidoAux.Unidades = Number(_Cantidad);
+          lPedidoAux.ImagenUrl = lProducto.ImagenUrl;
 
-      //#region
-      let lPedidoAuxFind:Pedido[]; 
-      lPedidoAuxFind = this.lListaPedido.filter(x => x.id == lProducto.id);
-      if(lPedidoAuxFind.length == 0){
-        this.lListaPedido.push(lPedidoAux);
-        console.log(1);
+          //#region
+          let lPedidoAuxFind: Pedido[];
+          lPedidoAuxFind = this.lListaPedido.filter(x => x.id == lProducto.id);
+          if (lPedidoAuxFind.length == 0) {
+            this.lListaPedido.push(lPedidoAux);
+          }
+          else {
+            this.lListaPedido.filter(x => x.id == lProducto.id).forEach(i => i.Unidades = i.Unidades + Number(_Cantidad));
+
+          }
+          //#endregion
+
+          sessionStorage.setItem("stPedidos", JSON.stringify(this.lListaPedido));
+
+        }
+        else {
+          alert("No se cuenta con el stock suficiente.");
+        }
       }
-      else{
-        this.lListaPedido.filter(x => x.id == lProducto.id).forEach(i => i.Unidades = i.Unidades + Number(_Cantidad));
-        console.log(2);
-      }
-      //#endregion
-
-      sessionStorage.setItem("stPedidos", JSON.stringify(this.lListaPedido));
-      
-    } 
-      else {
-      alert("No se cuenta con el stock suficiente.");
     }
+
+      
   }
 }

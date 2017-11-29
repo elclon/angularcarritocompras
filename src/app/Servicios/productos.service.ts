@@ -15,14 +15,20 @@ export class ProductosService {
 
   public obtenerProductos() {
     return this.http.get("https://examenangularreact.firebaseio.com/productos/.json")
-    .map((res: Response) => res.json());
+    .map((res: Response) => this.productos = res.json());
   }
-
-  
 
   public getProductos(): Producto[] {
     return this.productos;
   }
 
+  public mpObtenerDatosProducto(_id: number)
+  {
+    for(let p of this.productos) {
+      if(p.id == _id) {
+        return p;
+      }
+    }
+  }
   
 }

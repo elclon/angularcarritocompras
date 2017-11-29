@@ -14,10 +14,12 @@ export class DetalleProductoComponent implements OnInit {
 
   producto: Producto;
   
-    constructor(private _ProductosComponent: ProductosComponent, private router:Router, private _Ruta: ActivatedRoute ) 
+    constructor(private _ProductosComponent: ProductosComponent, private _ProductosService: ProductosService, private router:Router, private _Ruta: ActivatedRoute ) 
     { 
+      console.log(this._ProductosComponent.productos);
+
       this._Ruta.params.subscribe( params => {
-        this.producto = this._ProductosComponent.mpObtenerDatosProducto(params['id'])
+        this.producto = this._ProductosService.mpObtenerDatosProducto(params['id'])
       });
     }
 

@@ -14,7 +14,7 @@ import { Pipe } from '@angular/core';
 export class ProductosComponent implements OnInit {
 
   @Output() lListaPedido:Pedido[] = [];
-  private productos: Producto[];
+  @Output() productos: Producto[];
   private productosAux: Producto[];
 
   constructor(private _ProductosService: ProductosService, private router:Router) { }
@@ -23,9 +23,8 @@ export class ProductosComponent implements OnInit {
 
     this._ProductosService.obtenerProductos().subscribe(
       (data: Response) => {
-        this.productos = <Producto[]>JSON.parse(JSON.stringify(data));
+        this.productos = JSON.parse(JSON.stringify(data));
         this.productosAux = this.productos;
-        console.log(this.productos);
       }
     );
     sessionStorage.setItem("stPedidos", JSON.stringify(this.lListaPedido));
@@ -54,7 +53,7 @@ export class ProductosComponent implements OnInit {
 
   public agregarProductoAPedido(_idProducto:number, _Cantidad: number){
     
-    let lProducto = this.mpObtenerDatosProducto(_idProducto);
+    let lProducto = this._ProductosService.mpObtenerDatosProducto(_idProducto);
 
     if(_Cantidad <= lProducto.Unidades){
       lProducto.Unidades = lProducto.Unidades - _Cantidad;
@@ -86,14 +85,4 @@ export class ProductosComponent implements OnInit {
       alert("No se cuenta con el stock suficiente.");
     }
   }
-
-  public mpObtenerDatosProducto(_id: number)
-  {
-    for(let p of this.productos) {
-      if(p.id == _id) {
-        return p;
-      }
-    }
-  }
-
 }

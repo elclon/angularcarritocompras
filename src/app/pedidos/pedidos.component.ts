@@ -43,5 +43,6 @@ export class PedidosComponent implements OnInit {
     this.pedido = [];
     sessionStorage.setItem("carrito", JSON.stringify(this.pedido));
     this.router.navigate(['/principal']);
+    
   }
 }

@@ -14,6 +14,7 @@ export class ProductosService {
    }
 
   public obtenerProductos() {
+    this.productos = [];
     return this.http.get("https://examenangularreact.firebaseio.com/productos/.json")
     .map((res: Response) => this.productos = res.json());
   }

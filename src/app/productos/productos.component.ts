@@ -17,9 +17,13 @@ export class ProductosComponent implements OnInit {
   @Output() productos: Producto[];
   private productosAux: Producto[];
 
-  constructor(private _ProductosService: ProductosService, private router:Router) { }
+  constructor(private _ProductosService: ProductosService, private router:Router) { 
+    
+  }
 
   ngOnInit() {
+    this.productos = [];
+    this.productosAux = [];
     this._ProductosService.obtenerProductos().subscribe(
       (data: Response) => {
         this.productos = JSON.parse(JSON.stringify(data));

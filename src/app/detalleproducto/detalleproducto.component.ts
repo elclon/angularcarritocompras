@@ -24,7 +24,7 @@ export class DetalleProductoComponent implements OnInit {
     }
 
     private volver() {
-      this.router.navigate(['home']);
+      this.router.navigate(['principal']);
     }
 
   ngOnInit() {

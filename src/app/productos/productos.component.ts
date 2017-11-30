@@ -20,7 +20,7 @@ export class ProductosComponent implements OnInit {
   constructor(private _ProductosService: ProductosService, private router:Router) { }
 
   ngOnInit() {
-
+console.log("Entro");
     this._ProductosService.obtenerProductos().subscribe(
       (data: Response) => {
         this.productos = JSON.parse(JSON.stringify(data));

@@ -31,12 +31,10 @@ export class UsuariosComponent implements OnInit {
   mlIniciarSesion(_Usuario: string, _Password:string){
     this.usuariosAux = this.usuarios.filter(x => x.Usuario == _Usuario && x.Password == _Password);
     if(this.usuariosAux.length > 0){
-      console.log("si");
       this.router.navigate(['principal']);
     }
     else
     {
-      console.log("no");
       alert('Usuario no valido')
     }
   }
